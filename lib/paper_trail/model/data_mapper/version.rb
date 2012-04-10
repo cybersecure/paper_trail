@@ -1,44 +1,50 @@
+require 'dm-core'
+require 'dm-validations'
+require 'dm-rails'
+
 module PaperTrail::Model::DataMapper
   class Version
+    include ::DataMapper::Resource
+    include ::DataMapper::MassAssignmentSecurity
 
     belongs_to :item, :polymorphic => true
     validates_presence_of :event
     attr_accessible :item_type, :item_id, :event, :whodunnit, :object, :object_changes
 
     def self.with_item_keys(item_type, item_id)
-      scoped(:conditions => { :item_type => item_type, :item_id => item_id })
+      find(:item_type => item_type, :item_id => item_id)
     end
 
     def self.creates
-      where :event => 'create'
+      find(:event => 'create')
     end
 
     def self.updates
-      where :event => 'update'
+      find(:event => 'update')
     end
 
     def self.destroys
-      where :event => 'destroy'
+      find(:event => 'destroy')
+    end
+  
+    def subsequent(version)
+      where(["#{self.primary_key} > ?", version]).order("#{self.primary_key} ASC")
     end
 
-    scope :subsequent, lambda { |version|
-      where(["#{self.primary_key} > ?", version]).order("#{self.primary_key} ASC")
-    }
-
-    scope :preceding, lambda { |version|
+    def preceding(version)
       where(["#{self.primary_key} < ?", version]).order("#{self.primary_key} DESC")
-    }
+    end
 
-    scope :following, lambda { |timestamp|
+    def following(timestamp)
       # TODO: is this :order necessary, considering its presence on the has_many :versions association?
       where(["#{PaperTrail.timestamp_field} > ?", timestamp]).
         order("#{PaperTrail.timestamp_field} ASC, #{self.primary_key} ASC")
-    }
+    end
 
-    scope :between, lambda { |start_time, end_time|
+    def between(start_time,end_time)
       where(["#{PaperTrail.timestamp_field} > ? AND #{PaperTrail.timestamp_field} < ?", start_time, end_time ]).
         order("#{PaperTrail.timestamp_field} ASC, #{self.primary_key} ASC")
-    }
+    end
 
     # Restore the item from this version.
     #

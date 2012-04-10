@@ -17,6 +17,14 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'railties', '~> 3.0'
   s.add_dependency 'activerecord', '~> 3.0'
+  
+  # Datamapper dependencies
+  s.add_dependency 'dm-core', '>= 1.2.0'
+  s.add_dependency 'dm-migrations', '>= 1.2.0'
+  s.add_dependency 'dm-serializer', '>= 1.2.0'
+  s.add_dependency 'dm-timestamps', '>= 1.2.0'
+  s.add_dependency 'dm-validations', '>= 1.2.0'
+  s.add_dependency 'dm-rails', '>= 1.2.0'
 
   s.add_development_dependency 'rake'
   s.add_development_dependency 'shoulda',      '2.10.3'
