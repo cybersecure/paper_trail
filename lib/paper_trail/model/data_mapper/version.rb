@@ -37,25 +37,19 @@ module PaperTrail::Model::DataMapper
     end
   
     def subsequent(version)
-      all(["#{self.primary_key} > ?", version]).order("#{self.primary_key} ASC")
+      all(self.key.gt => version, :order => self.key.asc)
     end
 
     def preceding(version)
-      all
-      #where(["#{self.primary_key} < ?", version]).order("#{self.primary_key} DESC")
+      all(self.key.lt => version, :order => self.key.desc)
     end
 
     def following(timestamp)
-      all
-      # TODO: is this :order necessary, considering its presence on the has_many :versions association?
-#where(["#{PaperTrail.timestamp_field} > ?", timestamp]).
-#        order("#{PaperTrail.timestamp_field} ASC, #{self.primary_key} ASC")
+      all(PaperTrail.timestamp_field.gt => timestamp, :order => [PaperTrail.timestamp_field.asc, self.key.asc])
     end
 
     def between(start_time,end_time)
-      all
-#      where(["#{PaperTrail.timestamp_field} > ? AND #{PaperTrail.timestamp_field} < ?", start_time, end_time ]).
-#        order("#{PaperTrail.timestamp_field} ASC, #{self.primary_key} ASC")
+      all(PaperTrail.timestamp_field.gt => start_time, PaperTrail.timestamp_field.lt => end_time, :order => [PaperTrail.timestamp_field.asc, self.key.asc])
     end
 
     # Restore the item from this version.
@@ -70,51 +64,28 @@ module PaperTrail::Model::DataMapper
     #              set to a float to change the lookback time (check whether your db supports
     #              sub-second datetimes if you want them).
     def reify(options = {})
-      without_identity_map do
-        options[:has_one] = 3 if options[:has_one] == true
-        options.reverse_merge! :has_one => false
+      options[:has_one] = 3 if options[:has_one] == true
+      options.reverse_merge! :has_one => false
+      
+      unless object.nil?
+        attrs = YAML::load object
+        
+        klass = item_type.constantize
+        model = klass.new
 
-        unless object.nil?
-          attrs = YAML::load object
-
-          # Normally a polymorphic belongs_to relationship allows us
-          # to get the object we belong to by calling, in this case,
-          # +item+.  However this returns nil if +item+ has been
-          # destroyed, and we need to be able to retrieve destroyed
-          # objects.
-          #
-          # In this situation we constantize the +item_type+ to get hold of
-          # the class...except when the stored object's attributes
-          # include a +type+ key.  If this is the case, the object
-          # we belong to is using single table inheritance and the
-          # +item_type+ will be the base class, not the actual subclass.
-          # If +type+ is present but empty, the class is the base class.
-
-          if item
-            model = item
+        attrs.each do |k, v|
+          if model.respond_to?("#{k}=")
+            model.send :attribute_set, k.to_sym, v
           else
-            inheritance_column_name = item_type.constantize.inheritance_column
-            class_name = attrs[inheritance_column_name].blank? ? item_type : attrs[inheritance_column_name]
-            klass = class_name.constantize
-            model = klass.new
+            logger.warn "Attribute #{k} does not exist on #{item_type} (Version id: #{id})."
           end
-
-          attrs.each do |k, v|
-            if model.respond_to?("#{k}=")
-              model.send :write_attribute, k.to_sym, v
-            else
-              logger.warn "Attribute #{k} does not exist on #{item_type} (Version id: #{id})."
-            end
-          end
-
-          model.send "#{model.class.version_association_name}=", self
-
-          unless options[:has_one] == false
-            reify_has_ones model, options[:has_one]
-          end
-
-          model
         end
+
+        unless options[:has_one] == false
+          reify_has_ones model, options[:has_one]
+        end
+
+        model
       end
     end
 
@@ -154,21 +125,11 @@ module PaperTrail::Model::DataMapper
     end
 
     def index
-      id_column = self.class.primary_key.to_sym
+      id_column = self.class.key.to_sym
       sibling_versions.select(id_column).order("#{id_column} ASC").map(&id_column).index(self.send(id_column))
     end
 
     private
-
-    # In Rails 3.1+, calling reify on a previous version confuses the
-    # IdentityMap, if enabled. This prevents insertion into the map.
-    def without_identity_map(&block)
-      if defined?(ActiveRecord::IdentityMap) && ActiveRecord::IdentityMap.respond_to?(:without)
-        ActiveRecord::IdentityMap.without(&block)
-      else
-        block.call
-      end
-    end
 
     # Restore the `model`'s has_one associations as they were when this version was
     # superseded by the next (because that's what the user was looking at when they

@@ -65,16 +65,11 @@ module PaperTrail
           class_attribute :versions_association_name
           self.versions_association_name = options[:versions] || :versions
 
-# This depends on ActiveRecord polymorphism, not existant in DM so making it a method
-#          has n,    self.versions_association_name,
-#                    version_class_name, 
-#                    :child_key => :item_id,
-#                    :order => [ PaperTrail.timestamp_field.to_sym.asc, :id.asc ]
 
           # change the hooks to something that works with datamapper
           # after_create  :record_create, :if => :save_version? if !options[:on] || options[:on].include?(:create)
           after :create, :record_create # TODO : implement conditional code execution 
-          
+
           # before_update :record_update, :if => :save_version? if !options[:on] || options[:on].include?(:update)
           before :update, :record_update # TODO : same as above
           
@@ -94,15 +89,20 @@ module PaperTrail
       end
 
       # Wrap the following methods in a module so we can include them only in the
-      # ActiveRecord models that declare `has_paper_trail`.
+      # models that declare `has_paper_trail`.
       module InstanceMethods
+        
         # Returns true if this instance is the current, live one;
         # returns false if this instance came from a previous version.
         def live?
           source_version.nil?
         end
         
-        # method replacing the has n method
+        # This depends on ActiveRecord polymorphism, not existant in DM so making it a method
+        # has n,     self.versions_association_name,
+        #            version_class_name, 
+        #            :child_key => :item_id,
+        #            :order => [ PaperTrail.timestamp_field.to_sym.asc, :id.asc ]
         def method_missing method_name, *args, &block
           if method_name == versions_association_name
             associations = version_class.with_item_keys(self.class.name, id)
@@ -164,11 +164,8 @@ module PaperTrail
         end
 
         def record_create
-          puts "Creating the version"
           if switched_on?
-            m_data = merge_metadata(:event => 'create', :whodunnit => PaperTrail.whodunnit)
-            puts m_data
-            obj = send(self.class.versions_association_name).create m_data
+            version_class.create merge_metadata(:event => 'create', :whodunnit => PaperTrail.whodunnit, :item_type => self.class.name, :item_id => id)
           end
         end
 
@@ -177,15 +174,18 @@ module PaperTrail
             data = {
               :event     => 'update',
               :object    => object_to_string(item_before_change),
-              :whodunnit => PaperTrail.whodunnit
+              :whodunnit => PaperTrail.whodunnit,
+              :item_type => self.class.name,
+              :item_id   => id
             }
-            if version_class.column_names.include? 'object_changes'
-              # The double negative (reject, !include?) preserves the hash structure of self.changes.
-              data[:object_changes] = self.changes.reject do |key, value|
-                !notably_changed.include?(key)
-              end.to_yaml
-            end
-            send(self.class.versions_association_name).build merge_metadata(data)
+#            if version_class.column_names.include? 'object_changes'
+#              # The double negative (reject, !include?) preserves the hash structure of self.changes.
+#              data[:object_changes] = self.changes.reject do |key, value|
+#                !notably_changed.include?(key)
+#              end.to_yaml
+#            end
+            version_class.create merge_metadata(data)
+#            send(self.class.versions_association_name).build merge_metadata(data)
           end
         end
 
@@ -217,14 +217,11 @@ module PaperTrail
         end
 
         def item_before_change
-          previous = self.dup
-          # `dup` clears timestamps so we add them back.
-          all_timestamp_attributes.each do |column|
-            previous[column] = send(column) if respond_to?(column) && !send(column).nil?
-          end
+          previous = self.class.new(self.attributes.merge(:id => nil))
+          
           previous.tap do |prev|
             prev.id = id
-            changed_attributes.each { |attr, before| prev[attr] = before }
+            original_attributes.each { |attr, before| prev.send("#{attr.name}=", before) }
           end
         end
 
@@ -241,7 +238,11 @@ module PaperTrail
         end
 
         def changed_and_not_ignored
-          changed - self.class.ignore - self.class.skip
+          keys_changed = []
+          dirty_attributes.each do |attr,value|
+            keys_changed << attr.name
+          end
+          keys_changed - self.class.ignore - self.class.skip
         end
 
         def switched_on?
