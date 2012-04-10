@@ -3,8 +3,10 @@ require 'yaml'
 
 require 'paper_trail/config'
 require 'paper_trail/controller'
-require 'paper_trail/has_paper_trail'
-require 'paper_trail/version'
+require 'paper_trail/model/active_record'
+#require 'paper_trail/model/data_mapper'
+require 'paper_trail/model/active_record/version'
+#require 'paper_trail/model/data_mappper/version'
 
 # PaperTrail's module methods can be called in both models and controllers.
 module PaperTrail
@@ -89,9 +91,13 @@ end
 
 
 ActiveSupport.on_load(:active_record) do
-  include PaperTrail::Model
+  include PaperTrail::Model::ActiveRecord
 end
 
 ActiveSupport.on_load(:action_controller) do
   include PaperTrail::Controller
 end
+
+#if defined(DataMapper::Model)
+#  DataMapper::Model.include_inclusions(PaprtTrail::Model::DataMapper)
+#end
