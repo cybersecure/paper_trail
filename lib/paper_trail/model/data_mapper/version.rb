@@ -6,44 +6,56 @@ module PaperTrail::Model::DataMapper
   class Version
     include ::DataMapper::Resource
     include ::DataMapper::MassAssignmentSecurity
+  
+    property :id,               Serial
+  
+    property :item_id,          Integer,  :required => true
+    property :item_type,        String,   :required => true
+    property :event,            String,   :required => true
+    property :whodunnit,        String,   :required => true
+    property :object,           Text
+    property :object_changes,   Text
+    
+    property :created_at,       DateTime
 
-    belongs_to :item, :polymorphic => true
-    validates_presence_of :event
     attr_accessible :item_type, :item_id, :event, :whodunnit, :object, :object_changes
 
     def self.with_item_keys(item_type, item_id)
-      find(:item_type => item_type, :item_id => item_id)
+      all(:item_type => item_type, :item_id => item_id)
     end
 
     def self.creates
-      find(:event => 'create')
+      all(:event => 'create')
     end
 
     def self.updates
-      find(:event => 'update')
+      all(:event => 'update')
     end
 
     def self.destroys
-      find(:event => 'destroy')
+      all(:event => 'destroy')
     end
   
     def subsequent(version)
-      where(["#{self.primary_key} > ?", version]).order("#{self.primary_key} ASC")
+      all(["#{self.primary_key} > ?", version]).order("#{self.primary_key} ASC")
     end
 
     def preceding(version)
-      where(["#{self.primary_key} < ?", version]).order("#{self.primary_key} DESC")
+      all
+      #where(["#{self.primary_key} < ?", version]).order("#{self.primary_key} DESC")
     end
 
     def following(timestamp)
+      all
       # TODO: is this :order necessary, considering its presence on the has_many :versions association?
-      where(["#{PaperTrail.timestamp_field} > ?", timestamp]).
-        order("#{PaperTrail.timestamp_field} ASC, #{self.primary_key} ASC")
+#where(["#{PaperTrail.timestamp_field} > ?", timestamp]).
+#        order("#{PaperTrail.timestamp_field} ASC, #{self.primary_key} ASC")
     end
 
     def between(start_time,end_time)
-      where(["#{PaperTrail.timestamp_field} > ? AND #{PaperTrail.timestamp_field} < ?", start_time, end_time ]).
-        order("#{PaperTrail.timestamp_field} ASC, #{self.primary_key} ASC")
+      all
+#      where(["#{PaperTrail.timestamp_field} > ? AND #{PaperTrail.timestamp_field} < ?", start_time, end_time ]).
+#        order("#{PaperTrail.timestamp_field} ASC, #{self.primary_key} ASC")
     end
 
     # Restore the item from this version.

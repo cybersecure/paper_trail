@@ -65,16 +65,21 @@ module PaperTrail
           class_attribute :versions_association_name
           self.versions_association_name = options[:versions] || :versions
 
-          # change to has n
-          has_many self.versions_association_name,
-                   :class_name => version_class_name,
-                   :as         => :item,
-                   :order      => "#{PaperTrail.timestamp_field} ASC, #{self.version_class_name.constantize.primary_key} ASC"
+# This depends on ActiveRecord polymorphism, not existant in DM so making it a method
+#          has n,    self.versions_association_name,
+#                    version_class_name, 
+#                    :child_key => :item_id,
+#                    :order => [ PaperTrail.timestamp_field.to_sym.asc, :id.asc ]
 
           # change the hooks to something that works with datamapper
-          after_create  :record_create, :if => :save_version? if !options[:on] || options[:on].include?(:create)
-          before_update :record_update, :if => :save_version? if !options[:on] || options[:on].include?(:update)
-          after_destroy :record_destroy if !options[:on] || options[:on].include?(:destroy)
+          # after_create  :record_create, :if => :save_version? if !options[:on] || options[:on].include?(:create)
+          after :create, :record_create # TODO : implement conditional code execution 
+          
+          # before_update :record_update, :if => :save_version? if !options[:on] || options[:on].include?(:update)
+          before :update, :record_update # TODO : same as above
+          
+          # after_destroy :record_destroy if !options[:on] || options[:on].include?(:destroy), maybe implement paranoia
+          # for datamapper class and never delete, maybe not!
         end
 
         # Switches PaperTrail off for this class.
@@ -95,6 +100,15 @@ module PaperTrail
         # returns false if this instance came from a previous version.
         def live?
           source_version.nil?
+        end
+        
+        # method replacing the has n method
+        def method_missing method_name, *args, &block
+          if method_name == versions_association_name
+            associations = version_class.with_item_keys(self.class.name, id)
+          else 
+            super method_name, *args, &block
+          end
         end
 
         # Returns who put the object into its current state.
@@ -150,8 +164,11 @@ module PaperTrail
         end
 
         def record_create
+          puts "Creating the version"
           if switched_on?
-            send(self.class.versions_association_name).create merge_metadata(:event => 'create', :whodunnit => PaperTrail.whodunnit)
+            m_data = merge_metadata(:event => 'create', :whodunnit => PaperTrail.whodunnit)
+            puts m_data
+            obj = send(self.class.versions_association_name).create m_data
           end
         end
 
