@@ -6,7 +6,7 @@ describe "HasPaperTrailModel" do
     @post = Post.create(:title => "Something", :content => "Something else")
   end
 
-  context "when new" do
+  context "new" do
     before :each do
       @new_post = Post.new(:title => "Title", :content => "Content")
     end
@@ -26,7 +26,7 @@ describe "HasPaperTrailModel" do
       @new_post.versions.should_not be_empty
     end
 
-    context "when saved" do
+    context "save" do
       before :each do
         @new_post.save
       end
@@ -52,14 +52,14 @@ describe "HasPaperTrailModel" do
         @new_post.versions.last.changeset.should eql Hash.new
       end
 
-      context "when updated with no changes" do
+      context "update with no changes" do
         it "should not create new version" do
           @new_post.save
           @new_post.versions.count.should eql 1
         end
       end
 
-      context "when updated with changes" do
+      context "update with changes" do
         before :each do
           @new_post.update(:title => "Changed Title")
         end
@@ -78,7 +78,7 @@ describe "HasPaperTrailModel" do
     end
   end
 
-  context "when updated" do
+  context "update" do
     it "should increment the version count" do
       @post.title = "Something 2"
       previous_count = @post.versions.count
