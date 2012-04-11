@@ -5,5 +5,5 @@ class Post
   property :title,      String
   property :content,    String
 
-  has_paper_trail :class_name => "PostVersion"
+  has_paper_trail #:class_name => "PostVersion"
 end

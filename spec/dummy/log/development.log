@@ -1,0 +1,28 @@
+[datamapper] Setting up the "development" environment:
+[datamapper] Setting up :default repository: '/tank/homes/jais/projects/dev/paper_trail/spec/dummy/db/development.sqlite3' on sqlite3
+  [1m[36mSQL (0.092ms)[0m  [1mSELECT sqlite_version(*)[0m
+  [1m[35mSQL (0.253ms)[0m  DROP TABLE IF EXISTS "paper_trail_model_data_mapper_versions"
+  [1m[36mSQL (0.038ms)[0m  [1mPRAGMA table_info("paper_trail_model_data_mapper_versions")[0m
+  [1m[35mSQL (32.995ms)[0m  CREATE TABLE "paper_trail_model_data_mapper_versions" ("id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, "item_id" INTEGER NOT NULL, "item_type" VARCHAR(50) NOT NULL, "event" VARCHAR(50) NOT NULL, "whodunnit" VARCHAR(50) NOT NULL, "object" TEXT, "object_changes" TEXT, "created_at" TIMESTAMP)
+  [1m[36mSQL (27.708ms)[0m  [1mDROP TABLE IF EXISTS "paper_trail_model_data_mapper_versions"[0m
+  [1m[35mSQL (0.025ms)[0m  PRAGMA table_info("paper_trail_model_data_mapper_versions")
+  [1m[36mSQL (27.517ms)[0m  [1mCREATE TABLE "paper_trail_model_data_mapper_versions" ("id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, "item_id" INTEGER NOT NULL, "item_type" VARCHAR(50) NOT NULL, "event" VARCHAR(50) NOT NULL, "whodunnit" VARCHAR(50) NOT NULL, "object" TEXT, "object_changes" TEXT, "created_at" TIMESTAMP)[0m
+  [1m[35mSQL (0.114ms)[0m  DROP TABLE IF EXISTS "articles"
+  [1m[36mSQL (0.024ms)[0m  [1mPRAGMA table_info("articles")[0m
+  [1m[35mSQL (26.796ms)[0m  CREATE TABLE "articles" ("id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, "title" VARCHAR(50), "content" VARCHAR(50), "abstract" VARCHAR(50), "file_upload" VARCHAR(50))
+  [1m[36mSQL (0.116ms)[0m  [1mDROP TABLE IF EXISTS "documents"[0m
+  [1m[35mSQL (0.023ms)[0m  PRAGMA table_info("documents")
+  [1m[36mSQL (63.111ms)[0m  [1mCREATE TABLE "documents" ("id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, "name" VARCHAR(50))[0m
+  [1m[35mSQL (0.107ms)[0m  DROP TABLE IF EXISTS "posts"
+  [1m[36mSQL (0.024ms)[0m  [1mPRAGMA table_info("posts")[0m
+  [1m[35mSQL (56.128ms)[0m  CREATE TABLE "posts" ("id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, "title" VARCHAR(50), "content" VARCHAR(50))
+  [1m[36mSQL (0.110ms)[0m  [1mDROP TABLE IF EXISTS "songs"[0m
+  [1m[35mSQL (0.025ms)[0m  PRAGMA table_info("songs")
+  [1m[36mSQL (54.592ms)[0m  [1mCREATE TABLE "songs" ("id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, "length" INTEGER)[0m
+  [1m[35mSQL (0.108ms)[0m  DROP TABLE IF EXISTS "translations"
+  [1m[36mSQL (0.024ms)[0m  [1mPRAGMA table_info("translations")[0m
+  [1m[35mSQL (56.164ms)[0m  CREATE TABLE "translations" ("id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, "headline" VARCHAR(50), "content" VARCHAR(50), "language_code" VARCHAR(50), "type" VARCHAR(50))
+[datamapper] Setting up the "development" environment:
+[datamapper] Setting up :default repository: '/tank/homes/jais/projects/dev/paper_trail/spec/dummy/db/development.sqlite3' on sqlite3
+[datamapper] Setting up the "development" environment:
+[datamapper] Setting up :default repository: '/tank/homes/jais/projects/dev/paper_trail/spec/dummy/db/development.sqlite3' on sqlite3

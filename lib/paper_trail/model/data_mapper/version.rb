@@ -92,7 +92,7 @@ module PaperTrail::Model::DataMapper
     # Returns what changed in this version of the item.  Cf. `ActiveModel::Dirty#changes`.
     # Returns nil if your `versions` table does not have an `object_changes` text column.
     def changeset
-      if self.attributes.keys.include? 'object_changes'
+      if attributes.include? 'object_changes'.to_sym
         if changes = object_changes
           HashWithIndifferentAccess[YAML::load(changes)]
         else
