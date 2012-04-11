@@ -29,7 +29,9 @@ Gem::Specification.new do |s|
 
   s.add_development_dependency 'rake'
   s.add_development_dependency 'shoulda',               '2.10.3'
-  s.add_development_dependency 'sqlite3',               '~> 1.2'
   s.add_development_dependency 'dm-sqlite-adapter',     '~> 1.2.0'
+  s.add_development_dependency 'sqlite3'             
   s.add_development_dependency 'capybara',              '~> 1.0.0'
+  s.add_development_dependency 'rspec-rails'
+  s.add_development_dependency 'actionmailer'
 end

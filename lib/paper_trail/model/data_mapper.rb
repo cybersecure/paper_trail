@@ -73,8 +73,7 @@ module PaperTrail
           # before_update :record_update, :if => :save_version? if !options[:on] || options[:on].include?(:update)
           before :update, :record_update # TODO : same as above
           
-          # after_destroy :record_destroy if !options[:on] || options[:on].include?(:destroy), maybe implement paranoia
-          # for datamapper class and never delete, maybe not!
+          after :destroy, :record_destroy # if !options[:on] || options[:on].include?(:destroy)
         end
 
         # Switches PaperTrail off for this class.
@@ -178,6 +177,9 @@ module PaperTrail
               :item_type => self.class.name,
               :item_id   => id
             }
+            if attributes.include? 'object_changes'
+              puts "Yes, this one does support object changes"
+            end
 #            if version_class.column_names.include? 'object_changes'
 #              # The double negative (reject, !include?) preserves the hash structure of self.changes.
 #              data[:object_changes] = self.changes.reject do |key, value|
@@ -185,19 +187,18 @@ module PaperTrail
 #              end.to_yaml
 #            end
             version_class.create merge_metadata(data)
-#            send(self.class.versions_association_name).build merge_metadata(data)
           end
         end
 
         def record_destroy
-          if switched_on? and not new_record?
+          if switched_on? and not new?
             version_class.create merge_metadata(:item_id   => self.id,
-                                                :item_type => self.class.base_class.name,
+                                                :item_type => self.class.name,
                                                 :event     => 'destroy',
                                                 :object    => object_to_string(item_before_change),
                                                 :whodunnit => PaperTrail.whodunnit)
           end
-          send(self.class.versions_association_name).send :load_target
+#send(self.class.versions_association_name).send :load_target
         end
 
         def merge_metadata(data)
