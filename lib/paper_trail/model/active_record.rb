@@ -39,7 +39,7 @@ module PaperTrail
           attr_accessor self.version_association_name
 
           class_attribute :version_class_name
-          self.version_class_name = options[:class_name] || 'PaperTrail::Model::ActiveRecord::Version'
+          self.version_class_name = options[:class_name] || ( PaperTrail.version_class || 'PaperTrail::Model::ActiveRecord::Version' )
 
           class_attribute :ignore
           self.ignore = ([options[:ignore]].flatten.compact || []).map &:to_s

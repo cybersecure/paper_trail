@@ -39,6 +39,16 @@ module PaperTrail
     PaperTrail.config.timestamp_field
   end
 
+  # Set the field which changes the version class for all the models
+  def self.version_class=(class_name)
+    PaperTrail.config.version_class = class_name
+  end
+
+  # Returns field which changes the version class for all the models
+  def self.version_class
+    PaperTrail.config.version_class
+  end
+
   # Returns who is reponsible for any changes that occur.
   def self.whodunnit
     paper_trail_store[:whodunnit]
