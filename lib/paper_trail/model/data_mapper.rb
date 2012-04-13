@@ -5,7 +5,6 @@ module PaperTrail
         base.send :extend, ClassMethods
       end
 
-
       module ClassMethods
         # Declare this in your model to track every create, update, and destroy.  Each version of
         # the model is available in the `versions` association.
@@ -35,9 +34,6 @@ module PaperTrail
           class_attribute :version_association_name
           self.version_association_name = options[:version] || :version
 
-          # The version this instance was reified from.
-          attr_accessor self.version_association_name
-
           class_attribute :version_class_name
           self.version_class_name = options[:class_name] || ( PaperTrail.version_class || 'PaperTrail::Model::DataMapper::Version' )
 
@@ -66,7 +62,6 @@ module PaperTrail
           self.versions_association_name = options[:versions] || :versions
 
 
-          # change the hooks to something that works with datamapper
           # after_create  :record_create, :if => :save_version? if !options[:on] || options[:on].include?(:create)
           after :create, :record_create # TODO : implement conditional code execution 
 
@@ -152,6 +147,10 @@ module PaperTrail
           self.class.paper_trail_on if paper_trail_was_enabled
         end
 
+        def test_method(params)
+          respond_to?(params)
+        end
+
         private
 
         def version_class
@@ -177,14 +176,11 @@ module PaperTrail
               :item_type => self.class.name,
               :item_id   => id
             }
-            if attributes.include? 'object_changes'
-              puts "Yes, this one does support object changes"
-            end
 #            if version_class.column_names.include? 'object_changes'
-#              # The double negative (reject, !include?) preserves the hash structure of self.changes.
-#              data[:object_changes] = self.changes.reject do |key, value|
-#                !notably_changed.include?(key)
-#              end.to_yaml
+              # The double negative (reject, !include?) preserves the hash structure of self.changes.
+            data[:object_changes] = self.changes.reject do |key, value|
+              !notably_changed.include?(key)
+            end.to_yaml
 #            end
             version_class.create merge_metadata(data)
           end
@@ -218,7 +214,7 @@ module PaperTrail
 
         def item_before_change
           previous = self.class.new(self.attributes.merge(:id => nil))
-          
+
           previous.tap do |prev|
             prev.id = id
             original_attributes.each { |attr, before| prev.send("#{attr.name}=", before) }
@@ -235,6 +231,14 @@ module PaperTrail
 
         def notably_changed
           self.class.only.empty? ? changed_and_not_ignored : (changed_and_not_ignored & self.class.only)
+        end
+
+        def changes
+          change_hash = Hash.new
+          self.dirty_attributes.to_hash.each do |attr,val|
+            changes_hash[attr.name] = val
+          end
+          change_hash
         end
 
         def changed_and_not_ignored
