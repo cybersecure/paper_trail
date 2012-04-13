@@ -77,7 +77,7 @@ module PaperTrail::Model::DataMapper
           if model.respond_to?("#{k}=")
             model.send :attribute_set, k.to_sym, v
           else
-            logger.warn "Attribute #{k} does not exist on #{item_type} (Version id: #{id})."
+            puts "Attribute #{k} does not exist on #{item_type} (Version id: #{id})."
           end
         end
 
