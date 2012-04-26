@@ -150,6 +150,14 @@ module PaperTrail
         def test_method(params)
           respond_to?(params)
         end
+        
+        def changes
+          change_hash = Hash.new
+          self.dirty_attributes.to_hash.each do |attr,val|
+            changes_hash[attr.name] = val
+          end
+          change_hash
+        end
 
         private
 
@@ -233,13 +241,6 @@ module PaperTrail
           self.class.only.empty? ? changed_and_not_ignored : (changed_and_not_ignored & self.class.only)
         end
 
-        def changes
-          change_hash = Hash.new
-          self.dirty_attributes.to_hash.each do |attr,val|
-            changes_hash[attr.name] = val
-          end
-          change_hash
-        end
 
         def changed_and_not_ignored
           keys_changed = []
