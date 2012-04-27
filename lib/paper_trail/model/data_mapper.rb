@@ -34,6 +34,8 @@ module PaperTrail
           class_attribute :version_association_name
           self.version_association_name = options[:version] || :version
 
+          attr_accessor self.version_association_name
+
           class_attribute :version_class_name
           self.version_class_name = options[:class_name] || ( PaperTrail.version_class || 'PaperTrail::Model::DataMapper::Version' )
 

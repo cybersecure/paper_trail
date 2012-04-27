@@ -80,6 +80,8 @@ module PaperTrail::Model::DataMapper
             puts "Attribute #{k} does not exist on #{item_type} (Version id: #{id})."
           end
         end
+          
+        model.send "#{model.class.version_association_name}=", self
 
         unless options[:has_one] == false
           reify_has_ones model, options[:has_one]

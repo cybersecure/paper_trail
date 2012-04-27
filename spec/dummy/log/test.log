@@ -7446,3 +7446,463 @@ no such table: post_versions (code: 1, sql state: , query: INSERT INTO "post_ver
   [1m[35mSQL (0.144ms)[0m  SELECT "id", "item_id", "item_type", "event", "whodunnit", "created_at" FROM "paper_trail_model_data_mapper_versions" WHERE "event" = 'create' ORDER BY "id"
   [1m[36mSQL (0.124ms)[0m  [1mSELECT "id", "item_id", "item_type", "event", "whodunnit", "created_at" FROM "paper_trail_model_data_mapper_versions" WHERE "event" = 'update' ORDER BY "id"[0m
   [1m[35mSQL (0.104ms)[0m  SELECT "id", "item_id", "item_type", "event", "whodunnit", "created_at" FROM "paper_trail_model_data_mapper_versions" WHERE "event" = 'destroy' ORDER BY "id"
+[datamapper] Setting up the "test" environment:
+[datamapper] Setting up :default repository: '/tank/homes/jais/projects/dev/paper_trail/spec/dummy/db/test.sqlite3' on sqlite3
+  [1m[36mSQL (60.267ms)[0m  [1mINSERT INTO "posts" ("title", "content") VALUES ('Something', 'Something else')[0m
+  [1m[35mSQL (46.602ms)[0m  INSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit") VALUES (525, 'Post', 'create', '1')
+  [1m[36mSQL (44.183ms)[0m  [1mINSERT INTO "posts" ("title", "content") VALUES ('Something', 'Something else')[0m
+  [1m[35mSQL (41.024ms)[0m  INSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit") VALUES (526, 'Post', 'create', '1')
+  [1m[36mSQL (26.249ms)[0m  [1mINSERT INTO "posts" ("title", "content") VALUES ('Something', 'Something else')[0m
+  [1m[35mSQL (11.154ms)[0m  INSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit") VALUES (527, 'Post', 'create', '1')
+  [1m[36mSQL (43.449ms)[0m  [1mINSERT INTO "posts" ("title", "content") VALUES ('Title', 'Content')[0m
+  [1m[35mSQL (33.970ms)[0m  INSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit", "object") VALUES (528, 'Post', 'destroy', '1', '---
+:id: 528
+:title: Title
+:content: Content
+')
+  [1m[36mSQL (0.118ms)[0m  [1mSELECT "id", "item_id", "item_type", "event", "whodunnit", "created_at" FROM "paper_trail_model_data_mapper_versions" WHERE ("item_type" = 'Post' AND "item_id" = 528) ORDER BY "id"[0m
+  [1m[35mSQL (44.592ms)[0m  INSERT INTO "posts" ("title", "content") VALUES ('Something', 'Something else')
+  [1m[36mSQL (57.345ms)[0m  [1mINSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit") VALUES (529, 'Post', 'create', '1')[0m
+  [1m[35mSQL (58.655ms)[0m  INSERT INTO "posts" ("title", "content") VALUES ('Title', 'Content')
+  [1m[36mSQL (57.808ms)[0m  [1mINSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit") VALUES (530, 'Post', 'create', '1')[0m
+  [1m[35mSQL (0.081ms)[0m  SELECT "id", "item_id", "item_type", "event", "whodunnit", "created_at" FROM "paper_trail_model_data_mapper_versions" WHERE ("item_type" = 'Post' AND "item_id" = 530) ORDER BY "id"
+  [1m[36mSQL (42.066ms)[0m  [1mINSERT INTO "posts" ("title", "content") VALUES ('Something', 'Something else')[0m
+  [1m[35mSQL (57.459ms)[0m  INSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit") VALUES (531, 'Post', 'create', '1')
+  [1m[36mSQL (48.708ms)[0m  [1mINSERT INTO "posts" ("title", "content") VALUES ('Title', 'Content')[0m
+  [1m[35mSQL (57.692ms)[0m  INSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit") VALUES (532, 'Post', 'create', '1')
+  [1m[36mSQL (0.083ms)[0m  [1mSELECT "id", "item_id", "item_type", "event", "whodunnit", "created_at" FROM "paper_trail_model_data_mapper_versions" WHERE ("item_type" = 'Post' AND "item_id" = 532) ORDER BY "id" LIMIT 1[0m
+  [1m[35mSQL (0.075ms)[0m  SELECT "id", "object", "object_changes" FROM "paper_trail_model_data_mapper_versions" WHERE "id" = 690 ORDER BY "id"
+  [1m[36mSQL (0.079ms)[0m  [1mSELECT "id", "item_id", "item_type", "event", "whodunnit", "created_at" FROM "paper_trail_model_data_mapper_versions" WHERE ("item_type" = 'Post' AND "item_id" = 532) ORDER BY "id" LIMIT 1[0m
+  [1m[35mSQL (0.067ms)[0m  SELECT "id", "object", "object_changes" FROM "paper_trail_model_data_mapper_versions" WHERE "id" = 690 ORDER BY "id"
+  [1m[36mSQL (29.273ms)[0m  [1mINSERT INTO "posts" ("title", "content") VALUES ('Something', 'Something else')[0m
+  [1m[35mSQL (37.399ms)[0m  INSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit") VALUES (533, 'Post', 'create', '1')
+  [1m[36mSQL (58.749ms)[0m  [1mINSERT INTO "posts" ("title", "content") VALUES ('Title', 'Content')[0m
+  [1m[35mSQL (46.543ms)[0m  INSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit") VALUES (534, 'Post', 'create', '1')
+  [1m[36mSQL (0.083ms)[0m  [1mSELECT "id", "item_id", "item_type", "event", "whodunnit", "created_at" FROM "paper_trail_model_data_mapper_versions" WHERE ("item_type" = 'Post' AND "item_id" = 534) ORDER BY "id" LIMIT 1[0m
+  [1m[35mSQL (45.063ms)[0m  INSERT INTO "posts" ("title", "content") VALUES ('Something', 'Something else')
+  [1m[36mSQL (57.413ms)[0m  [1mINSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit") VALUES (535, 'Post', 'create', '1')[0m
+  [1m[35mSQL (58.625ms)[0m  INSERT INTO "posts" ("title", "content") VALUES ('Title', 'Content')
+  [1m[36mSQL (57.826ms)[0m  [1mINSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit") VALUES (536, 'Post', 'create', '1')[0m
+  [1m[35mSQL (47.437ms)[0m  INSERT INTO "posts" ("title", "content") VALUES ('Something', 'Something else')
+  [1m[36mSQL (55.371ms)[0m  [1mINSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit") VALUES (537, 'Post', 'create', '1')[0m
+  [1m[35mSQL (60.703ms)[0m  INSERT INTO "posts" ("title", "content") VALUES ('Title', 'Content')
+  [1m[36mSQL (57.808ms)[0m  [1mINSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit") VALUES (538, 'Post', 'create', '1')[0m
+  [1m[35mSQL (0.084ms)[0m  SELECT "id", "item_id", "item_type", "event", "whodunnit", "created_at" FROM "paper_trail_model_data_mapper_versions" WHERE ("item_type" = 'Post' AND "item_id" = 538) ORDER BY "id" DESC LIMIT 1
+  [1m[36mSQL (0.067ms)[0m  [1mSELECT "id", "object", "object_changes" FROM "paper_trail_model_data_mapper_versions" WHERE "id" = 696 ORDER BY "id"[0m
+  [1m[35mSQL (42.488ms)[0m  INSERT INTO "posts" ("title", "content") VALUES ('Something', 'Something else')
+  [1m[36mSQL (57.397ms)[0m  [1mINSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit") VALUES (539, 'Post', 'create', '1')[0m
+  [1m[35mSQL (58.627ms)[0m  INSERT INTO "posts" ("title", "content") VALUES ('Title', 'Content')
+  [1m[36mSQL (57.819ms)[0m  [1mINSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit") VALUES (540, 'Post', 'create', '1')[0m
+  [1m[35mSQL (0.082ms)[0m  SELECT "id", "item_id", "item_type", "event", "whodunnit", "created_at" FROM "paper_trail_model_data_mapper_versions" WHERE ("item_type" = 'Post' AND "item_id" = 540) ORDER BY "id"
+  [1m[36mSQL (34.417ms)[0m  [1mINSERT INTO "posts" ("title", "content") VALUES ('Something', 'Something else')[0m
+  [1m[35mSQL (51.080ms)[0m  INSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit") VALUES (541, 'Post', 'create', '1')
+  [1m[36mSQL (28.597ms)[0m  [1mINSERT INTO "posts" ("title", "content") VALUES ('Title', 'Content')[0m
+  [1m[35mSQL (27.737ms)[0m  INSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit") VALUES (542, 'Post', 'create', '1')
+  [1m[36mSQL (25.560ms)[0m  [1mINSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit", "object", "object_changes") VALUES (542, 'Post', 'update', '1', '---
+:id: 542
+:title: Title
+:content: Content
+', '---
+:title: Changed Title
+')[0m
+  [1m[35mSQL (28.570ms)[0m  UPDATE "posts" SET "title" = 'Changed Title' WHERE "id" = 542
+  [1m[36mSQL (0.088ms)[0m  [1mSELECT "id", "item_id", "item_type", "event", "whodunnit", "created_at" FROM "paper_trail_model_data_mapper_versions" WHERE ("item_type" = 'Post' AND "item_id" = 542) ORDER BY "id"[0m
+  [1m[35mSQL (24.648ms)[0m  INSERT INTO "posts" ("title", "content") VALUES ('Something', 'Something else')
+  [1m[36mSQL (27.378ms)[0m  [1mINSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit") VALUES (543, 'Post', 'create', '1')[0m
+  [1m[35mSQL (28.607ms)[0m  INSERT INTO "posts" ("title", "content") VALUES ('Title', 'Content')
+  [1m[36mSQL (27.746ms)[0m  [1mINSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit") VALUES (544, 'Post', 'create', '1')[0m
+  [1m[35mSQL (28.965ms)[0m  INSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit", "object", "object_changes") VALUES (544, 'Post', 'update', '1', '---
+:id: 544
+:title: Title
+:content: Content
+', '---
+:title: Changed Title
+')
+  [1m[36mSQL (28.455ms)[0m  [1mUPDATE "posts" SET "title" = 'Changed Title' WHERE "id" = 544[0m
+  [1m[35mSQL (0.087ms)[0m  SELECT "id", "item_id", "item_type", "event", "whodunnit", "created_at" FROM "paper_trail_model_data_mapper_versions" WHERE ("item_type" = 'Post' AND "item_id" = 544) ORDER BY "id" DESC LIMIT 1
+  [1m[36mSQL (0.071ms)[0m  [1mSELECT "id", "object", "object_changes" FROM "paper_trail_model_data_mapper_versions" WHERE "id" = 704 ORDER BY "id"[0m
+  [1m[35mSQL (0.082ms)[0m  SELECT "id", "item_id", "item_type", "event", "whodunnit", "created_at" FROM "paper_trail_model_data_mapper_versions" WHERE ("item_type" = 'Post' AND "item_id" = 544) ORDER BY "id" DESC LIMIT 1
+  [1m[36mSQL (0.069ms)[0m  [1mSELECT "id", "object", "object_changes" FROM "paper_trail_model_data_mapper_versions" WHERE "id" = 704 ORDER BY "id"[0m
+  [1m[35mSQL (27.109ms)[0m  INSERT INTO "posts" ("title", "content") VALUES ('Something', 'Something else')
+  [1m[36mSQL (27.386ms)[0m  [1mINSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit") VALUES (545, 'Post', 'create', '1')[0m
+  [1m[35mSQL (0.084ms)[0m  SELECT "id", "item_id", "item_type", "event", "whodunnit", "created_at" FROM "paper_trail_model_data_mapper_versions" WHERE ("item_type" = 'Post' AND "item_id" = 545) ORDER BY "id"
+  [1m[36mSQL (33.247ms)[0m  [1mINSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit", "object", "object_changes") VALUES (545, 'Post', 'update', '1', '---
+:id: 545
+:title: Something
+:content: Something else
+', '---
+:title: Something 2
+')[0m
+  [1m[35mSQL (28.858ms)[0m  UPDATE "posts" SET "title" = 'Something 2' WHERE "id" = 545
+  [1m[36mSQL (0.084ms)[0m  [1mSELECT "id", "item_id", "item_type", "event", "whodunnit", "created_at" FROM "paper_trail_model_data_mapper_versions" WHERE ("item_type" = 'Post' AND "item_id" = 545) ORDER BY "id"[0m
+  [1m[35mSQL (0.077ms)[0m  SELECT "id", "item_id", "item_type", "event", "whodunnit", "created_at" FROM "paper_trail_model_data_mapper_versions" WHERE "event" = 'create' ORDER BY "id"
+  [1m[36mSQL (0.081ms)[0m  [1mSELECT "id", "item_id", "item_type", "event", "whodunnit", "created_at" FROM "paper_trail_model_data_mapper_versions" WHERE "event" = 'update' ORDER BY "id"[0m
+  [1m[35mSQL (0.076ms)[0m  SELECT "id", "item_id", "item_type", "event", "whodunnit", "created_at" FROM "paper_trail_model_data_mapper_versions" WHERE "event" = 'destroy' ORDER BY "id"
+[datamapper] Setting up the "test" environment:
+[datamapper] Setting up :default repository: '/tank/homes/jais/projects/dev/paper_trail/spec/dummy/db/test.sqlite3' on sqlite3
+  [1m[36mSQL (29.312ms)[0m  [1mINSERT INTO "posts" ("title", "content") VALUES ('Something', 'Something else')[0m
+  [1m[35mSQL (26.814ms)[0m  INSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit") VALUES (546, 'Post', 'create', '1')
+  [1m[36mSQL (34.368ms)[0m  [1mINSERT INTO "posts" ("title", "content") VALUES ('Something', 'Something else')[0m
+  [1m[35mSQL (27.178ms)[0m  INSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit") VALUES (547, 'Post', 'create', '1')
+  [1m[36mSQL (27.210ms)[0m  [1mINSERT INTO "posts" ("title", "content") VALUES ('Something', 'Something else')[0m
+  [1m[35mSQL (27.306ms)[0m  INSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit") VALUES (548, 'Post', 'create', '1')
+  [1m[36mSQL (28.870ms)[0m  [1mINSERT INTO "posts" ("title", "content") VALUES ('Title', 'Content')[0m
+  [1m[35mSQL (26.483ms)[0m  INSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit", "object") VALUES (549, 'Post', 'destroy', '1', '---
+:id: 549
+:title: Title
+:content: Content
+')
+  [1m[36mSQL (0.115ms)[0m  [1mSELECT "id", "item_id", "item_type", "event", "whodunnit", "created_at" FROM "paper_trail_model_data_mapper_versions" WHERE ("item_type" = 'Post' AND "item_id" = 549) ORDER BY "id"[0m
+  [1m[35mSQL (24.720ms)[0m  INSERT INTO "posts" ("title", "content") VALUES ('Something', 'Something else')
+  [1m[36mSQL (27.488ms)[0m  [1mINSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit") VALUES (550, 'Post', 'create', '1')[0m
+  [1m[35mSQL (28.536ms)[0m  INSERT INTO "posts" ("title", "content") VALUES ('Title', 'Content')
+  [1m[36mSQL (27.803ms)[0m  [1mINSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit") VALUES (551, 'Post', 'create', '1')[0m
+  [1m[35mSQL (0.083ms)[0m  SELECT "id", "item_id", "item_type", "event", "whodunnit", "created_at" FROM "paper_trail_model_data_mapper_versions" WHERE ("item_type" = 'Post' AND "item_id" = 551) ORDER BY "id"
+  [1m[36mSQL (31.931ms)[0m  [1mINSERT INTO "posts" ("title", "content") VALUES ('Something', 'Something else')[0m
+  [1m[35mSQL (27.414ms)[0m  INSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit") VALUES (552, 'Post', 'create', '1')
+  [1m[36mSQL (28.648ms)[0m  [1mINSERT INTO "posts" ("title", "content") VALUES ('Title', 'Content')[0m
+  [1m[35mSQL (27.805ms)[0m  INSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit") VALUES (553, 'Post', 'create', '1')
+  [1m[36mSQL (0.083ms)[0m  [1mSELECT "id", "item_id", "item_type", "event", "whodunnit", "created_at" FROM "paper_trail_model_data_mapper_versions" WHERE ("item_type" = 'Post' AND "item_id" = 553) ORDER BY "id" LIMIT 1[0m
+  [1m[35mSQL (0.074ms)[0m  SELECT "id", "object", "object_changes" FROM "paper_trail_model_data_mapper_versions" WHERE "id" = 714 ORDER BY "id"
+  [1m[36mSQL (0.079ms)[0m  [1mSELECT "id", "item_id", "item_type", "event", "whodunnit", "created_at" FROM "paper_trail_model_data_mapper_versions" WHERE ("item_type" = 'Post' AND "item_id" = 553) ORDER BY "id" LIMIT 1[0m
+  [1m[35mSQL (0.067ms)[0m  SELECT "id", "object", "object_changes" FROM "paper_trail_model_data_mapper_versions" WHERE "id" = 714 ORDER BY "id"
+  [1m[36mSQL (27.837ms)[0m  [1mINSERT INTO "posts" ("title", "content") VALUES ('Something', 'Something else')[0m
+  [1m[35mSQL (27.484ms)[0m  INSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit") VALUES (554, 'Post', 'create', '1')
+  [1m[36mSQL (28.677ms)[0m  [1mINSERT INTO "posts" ("title", "content") VALUES ('Title', 'Content')[0m
+  [1m[35mSQL (27.829ms)[0m  INSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit") VALUES (555, 'Post', 'create', '1')
+  [1m[36mSQL (0.083ms)[0m  [1mSELECT "id", "item_id", "item_type", "event", "whodunnit", "created_at" FROM "paper_trail_model_data_mapper_versions" WHERE ("item_type" = 'Post' AND "item_id" = 555) ORDER BY "id" LIMIT 1[0m
+  [1m[35mSQL (25.133ms)[0m  INSERT INTO "posts" ("title", "content") VALUES ('Something', 'Something else')
+  [1m[36mSQL (27.456ms)[0m  [1mINSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit") VALUES (556, 'Post', 'create', '1')[0m
+  [1m[35mSQL (28.749ms)[0m  INSERT INTO "posts" ("title", "content") VALUES ('Title', 'Content')
+  [1m[36mSQL (27.732ms)[0m  [1mINSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit") VALUES (557, 'Post', 'create', '1')[0m
+  [1m[35mSQL (27.481ms)[0m  INSERT INTO "posts" ("title", "content") VALUES ('Something', 'Something else')
+  [1m[36mSQL (27.409ms)[0m  [1mINSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit") VALUES (558, 'Post', 'create', '1')[0m
+  [1m[35mSQL (28.643ms)[0m  INSERT INTO "posts" ("title", "content") VALUES ('Title', 'Content')
+  [1m[36mSQL (27.812ms)[0m  [1mINSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit") VALUES (559, 'Post', 'create', '1')[0m
+  [1m[35mSQL (0.083ms)[0m  SELECT "id", "item_id", "item_type", "event", "whodunnit", "created_at" FROM "paper_trail_model_data_mapper_versions" WHERE ("item_type" = 'Post' AND "item_id" = 559) ORDER BY "id" DESC LIMIT 1
+  [1m[36mSQL (0.068ms)[0m  [1mSELECT "id", "object", "object_changes" FROM "paper_trail_model_data_mapper_versions" WHERE "id" = 720 ORDER BY "id"[0m
+  [1m[35mSQL (32.481ms)[0m  INSERT INTO "posts" ("title", "content") VALUES ('Something', 'Something else')
+  [1m[36mSQL (27.535ms)[0m  [1mINSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit") VALUES (560, 'Post', 'create', '1')[0m
+  [1m[35mSQL (28.648ms)[0m  INSERT INTO "posts" ("title", "content") VALUES ('Title', 'Content')
+  [1m[36mSQL (27.720ms)[0m  [1mINSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit") VALUES (561, 'Post', 'create', '1')[0m
+  [1m[35mSQL (0.082ms)[0m  SELECT "id", "item_id", "item_type", "event", "whodunnit", "created_at" FROM "paper_trail_model_data_mapper_versions" WHERE ("item_type" = 'Post' AND "item_id" = 561) ORDER BY "id"
+  [1m[36mSQL (34.452ms)[0m  [1mINSERT INTO "posts" ("title", "content") VALUES ('Something', 'Something else')[0m
+  [1m[35mSQL (27.337ms)[0m  INSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit") VALUES (562, 'Post', 'create', '1')
+  [1m[36mSQL (28.658ms)[0m  [1mINSERT INTO "posts" ("title", "content") VALUES ('Title', 'Content')[0m
+  [1m[35mSQL (27.669ms)[0m  INSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit") VALUES (563, 'Post', 'create', '1')
+  [1m[36mSQL (25.507ms)[0m  [1mINSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit", "object", "object_changes") VALUES (563, 'Post', 'update', '1', '---
+:id: 563
+:title: Title
+:content: Content
+', '---
+:title: Changed Title
+')[0m
+  [1m[35mSQL (28.530ms)[0m  UPDATE "posts" SET "title" = 'Changed Title' WHERE "id" = 563
+  [1m[36mSQL (0.088ms)[0m  [1mSELECT "id", "item_id", "item_type", "event", "whodunnit", "created_at" FROM "paper_trail_model_data_mapper_versions" WHERE ("item_type" = 'Post' AND "item_id" = 563) ORDER BY "id"[0m
+  [1m[35mSQL (24.622ms)[0m  INSERT INTO "posts" ("title", "content") VALUES ('Something', 'Something else')
+  [1m[36mSQL (27.359ms)[0m  [1mINSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit") VALUES (564, 'Post', 'create', '1')[0m
+  [1m[35mSQL (28.751ms)[0m  INSERT INTO "posts" ("title", "content") VALUES ('Title', 'Content')
+  [1m[36mSQL (27.710ms)[0m  [1mINSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit") VALUES (565, 'Post', 'create', '1')[0m
+  [1m[35mSQL (29.428ms)[0m  INSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit", "object", "object_changes") VALUES (565, 'Post', 'update', '1', '---
+:id: 565
+:title: Title
+:content: Content
+', '---
+:title: Changed Title
+')
+  [1m[36mSQL (28.463ms)[0m  [1mUPDATE "posts" SET "title" = 'Changed Title' WHERE "id" = 565[0m
+  [1m[35mSQL (0.090ms)[0m  SELECT "id", "item_id", "item_type", "event", "whodunnit", "created_at" FROM "paper_trail_model_data_mapper_versions" WHERE ("item_type" = 'Post' AND "item_id" = 565) ORDER BY "id" DESC LIMIT 1
+  [1m[36mSQL (0.071ms)[0m  [1mSELECT "id", "object", "object_changes" FROM "paper_trail_model_data_mapper_versions" WHERE "id" = 728 ORDER BY "id"[0m
+  [1m[35mSQL (0.083ms)[0m  SELECT "id", "item_id", "item_type", "event", "whodunnit", "created_at" FROM "paper_trail_model_data_mapper_versions" WHERE ("item_type" = 'Post' AND "item_id" = 565) ORDER BY "id" DESC LIMIT 1
+  [1m[36mSQL (0.070ms)[0m  [1mSELECT "id", "object", "object_changes" FROM "paper_trail_model_data_mapper_versions" WHERE "id" = 728 ORDER BY "id"[0m
+  [1m[35mSQL (26.989ms)[0m  INSERT INTO "posts" ("title", "content") VALUES ('Something', 'Something else')
+  [1m[36mSQL (27.438ms)[0m  [1mINSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit") VALUES (566, 'Post', 'create', '1')[0m
+  [1m[35mSQL (0.086ms)[0m  SELECT "id", "item_id", "item_type", "event", "whodunnit", "created_at" FROM "paper_trail_model_data_mapper_versions" WHERE ("item_type" = 'Post' AND "item_id" = 566) ORDER BY "id"
+  [1m[36mSQL (33.187ms)[0m  [1mINSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit", "object", "object_changes") VALUES (566, 'Post', 'update', '1', '---
+:id: 566
+:title: Something
+:content: Something else
+', '---
+:title: Something 2
+')[0m
+  [1m[35mSQL (28.846ms)[0m  UPDATE "posts" SET "title" = 'Something 2' WHERE "id" = 566
+  [1m[36mSQL (0.084ms)[0m  [1mSELECT "id", "item_id", "item_type", "event", "whodunnit", "created_at" FROM "paper_trail_model_data_mapper_versions" WHERE ("item_type" = 'Post' AND "item_id" = 566) ORDER BY "id"[0m
+  [1m[35mSQL (0.078ms)[0m  SELECT "id", "item_id", "item_type", "event", "whodunnit", "created_at" FROM "paper_trail_model_data_mapper_versions" WHERE "event" = 'create' ORDER BY "id"
+  [1m[36mSQL (0.084ms)[0m  [1mSELECT "id", "item_id", "item_type", "event", "whodunnit", "created_at" FROM "paper_trail_model_data_mapper_versions" WHERE "event" = 'update' ORDER BY "id"[0m
+  [1m[35mSQL (0.080ms)[0m  SELECT "id", "item_id", "item_type", "event", "whodunnit", "created_at" FROM "paper_trail_model_data_mapper_versions" WHERE "event" = 'destroy' ORDER BY "id"
+[datamapper] Setting up the "test" environment:
+[datamapper] Setting up :default repository: '/tank/homes/jais/projects/dev/paper_trail/spec/dummy/db/test.sqlite3' on sqlite3
+  [1m[36mSQL (44.238ms)[0m  [1mINSERT INTO "posts" ("title", "content") VALUES ('Something', 'Something else')[0m
+  [1m[35mSQL (52.667ms)[0m  INSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit") VALUES (567, 'Post', 'create', '1')
+  [1m[36mSQL (58.680ms)[0m  [1mINSERT INTO "posts" ("title", "content") VALUES ('Something', 'Something else')[0m
+  [1m[35mSQL (57.258ms)[0m  INSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit") VALUES (568, 'Post', 'create', '1')
+  [1m[36mSQL (47.205ms)[0m  [1mINSERT INTO "posts" ("title", "content") VALUES ('Something', 'Something else')[0m
+  [1m[35mSQL (57.319ms)[0m  INSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit") VALUES (569, 'Post', 'create', '1')
+  [1m[36mSQL (58.399ms)[0m  [1mINSERT INTO "posts" ("title", "content") VALUES ('Title', 'Content')[0m
+  [1m[35mSQL (57.054ms)[0m  INSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit", "object") VALUES (570, 'Post', 'destroy', '1', '---
+:id: 570
+:title: Title
+:content: Content
+')
+  [1m[36mSQL (0.114ms)[0m  [1mSELECT "id", "item_id", "item_type", "event", "whodunnit", "created_at" FROM "paper_trail_model_data_mapper_versions" WHERE ("item_type" = 'Post' AND "item_id" = 570) ORDER BY "id"[0m
+  [1m[35mSQL (44.674ms)[0m  INSERT INTO "posts" ("title", "content") VALUES ('Something', 'Something else')
+  [1m[36mSQL (57.372ms)[0m  [1mINSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit") VALUES (571, 'Post', 'create', '1')[0m
+  [1m[35mSQL (41.170ms)[0m  INSERT INTO "posts" ("title", "content") VALUES ('Title', 'Content')
+  [1m[36mSQL (55.339ms)[0m  [1mINSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit") VALUES (572, 'Post', 'create', '1')[0m
+  [1m[35mSQL (0.081ms)[0m  SELECT "id", "item_id", "item_type", "event", "whodunnit", "created_at" FROM "paper_trail_model_data_mapper_versions" WHERE ("item_type" = 'Post' AND "item_id" = 572) ORDER BY "id"
+  [1m[36mSQL (33.221ms)[0m  [1mINSERT INTO "posts" ("title", "content") VALUES ('Something', 'Something else')[0m
+  [1m[35mSQL (57.424ms)[0m  INSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit") VALUES (573, 'Post', 'create', '1')
+  [1m[36mSQL (48.651ms)[0m  [1mINSERT INTO "posts" ("title", "content") VALUES ('Title', 'Content')[0m
+  [1m[35mSQL (53.852ms)[0m  INSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit") VALUES (574, 'Post', 'create', '1')
+  [1m[36mSQL (0.085ms)[0m  [1mSELECT "id", "item_id", "item_type", "event", "whodunnit", "created_at" FROM "paper_trail_model_data_mapper_versions" WHERE ("item_type" = 'Post' AND "item_id" = 574) ORDER BY "id" LIMIT 1[0m
+  [1m[35mSQL (0.076ms)[0m  SELECT "id", "object", "object_changes" FROM "paper_trail_model_data_mapper_versions" WHERE "id" = 738 ORDER BY "id"
+  [1m[36mSQL (0.080ms)[0m  [1mSELECT "id", "item_id", "item_type", "event", "whodunnit", "created_at" FROM "paper_trail_model_data_mapper_versions" WHERE ("item_type" = 'Post' AND "item_id" = 574) ORDER BY "id" LIMIT 1[0m
+  [1m[35mSQL (0.068ms)[0m  SELECT "id", "object", "object_changes" FROM "paper_trail_model_data_mapper_versions" WHERE "id" = 738 ORDER BY "id"
+  [1m[36mSQL (50.396ms)[0m  [1mINSERT INTO "posts" ("title", "content") VALUES ('Something', 'Something else')[0m
+  [1m[35mSQL (28.594ms)[0m  INSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit") VALUES (575, 'Post', 'create', '1')
+  [1m[36mSQL (28.646ms)[0m  [1mINSERT INTO "posts" ("title", "content") VALUES ('Title', 'Content')[0m
+  [1m[35mSQL (29.124ms)[0m  INSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit") VALUES (576, 'Post', 'create', '1')
+  [1m[36mSQL (0.085ms)[0m  [1mSELECT "id", "item_id", "item_type", "event", "whodunnit", "created_at" FROM "paper_trail_model_data_mapper_versions" WHERE ("item_type" = 'Post' AND "item_id" = 576) ORDER BY "id" LIMIT 1[0m
+  [1m[35mSQL (25.083ms)[0m  INSERT INTO "posts" ("title", "content") VALUES ('Something', 'Something else')
+  [1m[36mSQL (27.413ms)[0m  [1mINSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit") VALUES (577, 'Post', 'create', '1')[0m
+  [1m[35mSQL (28.640ms)[0m  INSERT INTO "posts" ("title", "content") VALUES ('Title', 'Content')
+  [1m[36mSQL (27.854ms)[0m  [1mINSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit") VALUES (578, 'Post', 'create', '1')[0m
+  [1m[35mSQL (27.440ms)[0m  INSERT INTO "posts" ("title", "content") VALUES ('Something', 'Something else')
+  [1m[36mSQL (27.516ms)[0m  [1mINSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit") VALUES (579, 'Post', 'create', '1')[0m
+  [1m[35mSQL (28.624ms)[0m  INSERT INTO "posts" ("title", "content") VALUES ('Title', 'Content')
+  [1m[36mSQL (26.611ms)[0m  [1mINSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit") VALUES (580, 'Post', 'create', '1')[0m
+  [1m[35mSQL (0.084ms)[0m  SELECT "id", "item_id", "item_type", "event", "whodunnit", "created_at" FROM "paper_trail_model_data_mapper_versions" WHERE ("item_type" = 'Post' AND "item_id" = 580) ORDER BY "id" DESC LIMIT 1
+  [1m[36mSQL (0.069ms)[0m  [1mSELECT "id", "object", "object_changes" FROM "paper_trail_model_data_mapper_versions" WHERE "id" = 744 ORDER BY "id"[0m
+  [1m[35mSQL (31.123ms)[0m  INSERT INTO "posts" ("title", "content") VALUES ('Something', 'Something else')
+  [1m[36mSQL (57.377ms)[0m  [1mINSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit") VALUES (581, 'Post', 'create', '1')[0m
+  [1m[35mSQL (42.030ms)[0m  INSERT INTO "posts" ("title", "content") VALUES ('Title', 'Content')
+  [1m[36mSQL (54.478ms)[0m  [1mINSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit") VALUES (582, 'Post', 'create', '1')[0m
+  [1m[35mSQL (0.081ms)[0m  SELECT "id", "item_id", "item_type", "event", "whodunnit", "created_at" FROM "paper_trail_model_data_mapper_versions" WHERE ("item_type" = 'Post' AND "item_id" = 582) ORDER BY "id"
+  [1m[36mSQL (33.133ms)[0m  [1mINSERT INTO "posts" ("title", "content") VALUES ('Something', 'Something else')[0m
+  [1m[35mSQL (59.900ms)[0m  INSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit") VALUES (583, 'Post', 'create', '1')
+  [1m[36mSQL (42.843ms)[0m  [1mINSERT INTO "posts" ("title", "content") VALUES ('Title', 'Content')[0m
+  [1m[35mSQL (35.307ms)[0m  INSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit") VALUES (584, 'Post', 'create', '1')
+  [1m[36mSQL (11.604ms)[0m  [1mINSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit", "object", "object_changes") VALUES (584, 'Post', 'update', '1', '---
+:id: 584
+:title: Title
+:content: Content
+', '---
+:title: Changed Title
+')[0m
+  [1m[35mSQL (13.279ms)[0m  UPDATE "posts" SET "title" = 'Changed Title' WHERE "id" = 584
+  [1m[36mSQL (0.093ms)[0m  [1mSELECT "id", "item_id", "item_type", "event", "whodunnit", "created_at" FROM "paper_trail_model_data_mapper_versions" WHERE ("item_type" = 'Post' AND "item_id" = 584) ORDER BY "id"[0m
+  [1m[35mSQL (19.954ms)[0m  INSERT INTO "posts" ("title", "content") VALUES ('Something', 'Something else')
+  [1m[36mSQL (52.062ms)[0m  [1mINSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit") VALUES (585, 'Post', 'create', '1')[0m
+  [1m[35mSQL (55.102ms)[0m  INSERT INTO "posts" ("title", "content") VALUES ('Title', 'Content')
+  [1m[36mSQL (53.833ms)[0m  [1mINSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit") VALUES (586, 'Post', 'create', '1')[0m
+  [1m[35mSQL (50.928ms)[0m  INSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit", "object", "object_changes") VALUES (586, 'Post', 'update', '1', '---
+:id: 586
+:title: Title
+:content: Content
+', '---
+:title: Changed Title
+')
+  [1m[36mSQL (49.918ms)[0m  [1mUPDATE "posts" SET "title" = 'Changed Title' WHERE "id" = 586[0m
+  [1m[35mSQL (0.091ms)[0m  SELECT "id", "item_id", "item_type", "event", "whodunnit", "created_at" FROM "paper_trail_model_data_mapper_versions" WHERE ("item_type" = 'Post' AND "item_id" = 586) ORDER BY "id" DESC LIMIT 1
+  [1m[36mSQL (0.075ms)[0m  [1mSELECT "id", "object", "object_changes" FROM "paper_trail_model_data_mapper_versions" WHERE "id" = 752 ORDER BY "id"[0m
+  [1m[35mSQL (0.083ms)[0m  SELECT "id", "item_id", "item_type", "event", "whodunnit", "created_at" FROM "paper_trail_model_data_mapper_versions" WHERE ("item_type" = 'Post' AND "item_id" = 586) ORDER BY "id" DESC LIMIT 1
+  [1m[36mSQL (0.070ms)[0m  [1mSELECT "id", "object", "object_changes" FROM "paper_trail_model_data_mapper_versions" WHERE "id" = 752 ORDER BY "id"[0m
+  [1m[35mSQL (36.514ms)[0m  INSERT INTO "posts" ("title", "content") VALUES ('Something', 'Something else')
+  [1m[36mSQL (50.316ms)[0m  [1mINSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit") VALUES (587, 'Post', 'create', '1')[0m
+  [1m[35mSQL (0.082ms)[0m  SELECT "id", "item_id", "item_type", "event", "whodunnit", "created_at" FROM "paper_trail_model_data_mapper_versions" WHERE ("item_type" = 'Post' AND "item_id" = 587) ORDER BY "id"
+  [1m[36mSQL (60.166ms)[0m  [1mINSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit", "object", "object_changes") VALUES (587, 'Post', 'update', '1', '---
+:id: 587
+:title: Something
+:content: Something else
+', '---
+:title: Something 2
+')[0m
+  [1m[35mSQL (48.835ms)[0m  UPDATE "posts" SET "title" = 'Something 2' WHERE "id" = 587
+  [1m[36mSQL (0.082ms)[0m  [1mSELECT "id", "item_id", "item_type", "event", "whodunnit", "created_at" FROM "paper_trail_model_data_mapper_versions" WHERE ("item_type" = 'Post' AND "item_id" = 587) ORDER BY "id"[0m
+  [1m[35mSQL (0.079ms)[0m  SELECT "id", "item_id", "item_type", "event", "whodunnit", "created_at" FROM "paper_trail_model_data_mapper_versions" WHERE "event" = 'create' ORDER BY "id"
+  [1m[36mSQL (0.096ms)[0m  [1mSELECT "id", "item_id", "item_type", "event", "whodunnit", "created_at" FROM "paper_trail_model_data_mapper_versions" WHERE "event" = 'update' ORDER BY "id"[0m
+  [1m[35mSQL (0.077ms)[0m  SELECT "id", "item_id", "item_type", "event", "whodunnit", "created_at" FROM "paper_trail_model_data_mapper_versions" WHERE "event" = 'destroy' ORDER BY "id"
+[datamapper] Setting up the "test" environment:
+[datamapper] Setting up :default repository: '/tank/homes/jais/projects/dev/paper_trail/spec/dummy/db/test.sqlite3' on sqlite3
+  [1m[36mSQL (55.272ms)[0m  [1mINSERT INTO "posts" ("title", "content") VALUES ('Something', 'Something else')[0m
+  [1m[35mSQL (61.501ms)[0m  INSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit") VALUES (588, 'Post', 'create', '1')
+  [1m[36mSQL (12.763ms)[0m  [1mINSERT INTO "posts" ("title", "content") VALUES ('Something', 'Something else')[0m
+  [1m[35mSQL (37.021ms)[0m  INSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit") VALUES (589, 'Post', 'create', '1')
+  [1m[36mSQL (36.994ms)[0m  [1mINSERT INTO "posts" ("title", "content") VALUES ('Something', 'Something else')[0m
+  [1m[35mSQL (47.325ms)[0m  INSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit") VALUES (590, 'Post', 'create', '1')
+  [1m[36mSQL (48.852ms)[0m  [1mINSERT INTO "posts" ("title", "content") VALUES ('Title', 'Content')[0m
+  [1m[35mSQL (46.490ms)[0m  INSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit", "object") VALUES (591, 'Post', 'destroy', '1', '---
+:id: 591
+:title: Title
+:content: Content
+')
+  [1m[36mSQL (0.118ms)[0m  [1mSELECT "id", "item_id", "item_type", "event", "whodunnit", "created_at" FROM "paper_trail_model_data_mapper_versions" WHERE ("item_type" = 'Post' AND "item_id" = 591) ORDER BY "id"[0m
+  [1m[35mSQL (44.567ms)[0m  INSERT INTO "posts" ("title", "content") VALUES ('Something', 'Something else')
+  [1m[36mSQL (47.284ms)[0m  [1mINSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit") VALUES (592, 'Post', 'create', '1')[0m
+  [1m[35mSQL (48.631ms)[0m  INSERT INTO "posts" ("title", "content") VALUES ('Title', 'Content')
+  [1m[36mSQL (47.773ms)[0m  [1mINSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit") VALUES (593, 'Post', 'create', '1')[0m
+  [1m[35mSQL (0.083ms)[0m  SELECT "id", "item_id", "item_type", "event", "whodunnit", "created_at" FROM "paper_trail_model_data_mapper_versions" WHERE ("item_type" = 'Post' AND "item_id" = 593) ORDER BY "id"
+  [1m[36mSQL (41.974ms)[0m  [1mINSERT INTO "posts" ("title", "content") VALUES ('Something', 'Something else')[0m
+  [1m[35mSQL (47.360ms)[0m  INSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit") VALUES (594, 'Post', 'create', '1')
+  [1m[36mSQL (48.644ms)[0m  [1mINSERT INTO "posts" ("title", "content") VALUES ('Title', 'Content')[0m
+  [1m[35mSQL (47.749ms)[0m  INSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit") VALUES (595, 'Post', 'create', '1')
+  [1m[36mSQL (0.083ms)[0m  [1mSELECT "id", "item_id", "item_type", "event", "whodunnit", "created_at" FROM "paper_trail_model_data_mapper_versions" WHERE ("item_type" = 'Post' AND "item_id" = 595) ORDER BY "id" LIMIT 1[0m
+  [1m[35mSQL (0.077ms)[0m  SELECT "id", "object", "object_changes" FROM "paper_trail_model_data_mapper_versions" WHERE "id" = 762 ORDER BY "id"
+  [1m[36mSQL (0.080ms)[0m  [1mSELECT "id", "item_id", "item_type", "event", "whodunnit", "created_at" FROM "paper_trail_model_data_mapper_versions" WHERE ("item_type" = 'Post' AND "item_id" = 595) ORDER BY "id" LIMIT 1[0m
+  [1m[35mSQL (0.068ms)[0m  SELECT "id", "object", "object_changes" FROM "paper_trail_model_data_mapper_versions" WHERE "id" = 762 ORDER BY "id"
+  [1m[36mSQL (47.696ms)[0m  [1mINSERT INTO "posts" ("title", "content") VALUES ('Something', 'Something else')[0m
+  [1m[35mSQL (57.375ms)[0m  INSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit") VALUES (596, 'Post', 'create', '1')
+  [1m[36mSQL (48.591ms)[0m  [1mINSERT INTO "posts" ("title", "content") VALUES ('Title', 'Content')[0m
+  [1m[35mSQL (47.798ms)[0m  INSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit") VALUES (597, 'Post', 'create', '1')
+  [1m[36mSQL (0.084ms)[0m  [1mSELECT "id", "item_id", "item_type", "event", "whodunnit", "created_at" FROM "paper_trail_model_data_mapper_versions" WHERE ("item_type" = 'Post' AND "item_id" = 597) ORDER BY "id" LIMIT 1[0m
+  [1m[35mSQL (44.991ms)[0m  INSERT INTO "posts" ("title", "content") VALUES ('Something', 'Something else')
+  [1m[36mSQL (47.423ms)[0m  [1mINSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit") VALUES (598, 'Post', 'create', '1')[0m
+  [1m[35mSQL (48.626ms)[0m  INSERT INTO "posts" ("title", "content") VALUES ('Title', 'Content')
+  [1m[36mSQL (47.729ms)[0m  [1mINSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit") VALUES (599, 'Post', 'create', '1')[0m
+  [1m[35mSQL (47.376ms)[0m  INSERT INTO "posts" ("title", "content") VALUES ('Something', 'Something else')
+  [1m[36mSQL (47.398ms)[0m  [1mINSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit") VALUES (600, 'Post', 'create', '1')[0m
+  [1m[35mSQL (32.343ms)[0m  INSERT INTO "posts" ("title", "content") VALUES ('Title', 'Content')
+  [1m[36mSQL (27.836ms)[0m  [1mINSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit") VALUES (601, 'Post', 'create', '1')[0m
+  [1m[35mSQL (0.083ms)[0m  SELECT "id", "item_id", "item_type", "event", "whodunnit", "created_at" FROM "paper_trail_model_data_mapper_versions" WHERE ("item_type" = 'Post' AND "item_id" = 601) ORDER BY "id" DESC LIMIT 1
+  [1m[36mSQL (0.068ms)[0m  [1mSELECT "id", "object", "object_changes" FROM "paper_trail_model_data_mapper_versions" WHERE "id" = 768 ORDER BY "id"[0m
+  [1m[35mSQL (32.314ms)[0m  INSERT INTO "posts" ("title", "content") VALUES ('Something', 'Something else')
+  [1m[36mSQL (27.490ms)[0m  [1mINSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit") VALUES (602, 'Post', 'create', '1')[0m
+  [1m[35mSQL (28.592ms)[0m  INSERT INTO "posts" ("title", "content") VALUES ('Title', 'Content')
+  [1m[36mSQL (27.873ms)[0m  [1mINSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit") VALUES (603, 'Post', 'create', '1')[0m
+  [1m[35mSQL (0.082ms)[0m  SELECT "id", "item_id", "item_type", "event", "whodunnit", "created_at" FROM "paper_trail_model_data_mapper_versions" WHERE ("item_type" = 'Post' AND "item_id" = 603) ORDER BY "id"
+  [1m[36mSQL (34.315ms)[0m  [1mINSERT INTO "posts" ("title", "content") VALUES ('Something', 'Something else')[0m
+  [1m[35mSQL (27.439ms)[0m  INSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit") VALUES (604, 'Post', 'create', '1')
+  [1m[36mSQL (28.635ms)[0m  [1mINSERT INTO "posts" ("title", "content") VALUES ('Title', 'Content')[0m
+  [1m[35mSQL (27.751ms)[0m  INSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit") VALUES (605, 'Post', 'create', '1')
+  [1m[36mSQL (25.540ms)[0m  [1mINSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit", "object", "object_changes") VALUES (605, 'Post', 'update', '1', '---
+:id: 605
+:title: Title
+:content: Content
+', '---
+:title: Changed Title
+')[0m
+  [1m[35mSQL (28.549ms)[0m  UPDATE "posts" SET "title" = 'Changed Title' WHERE "id" = 605
+  [1m[36mSQL (0.088ms)[0m  [1mSELECT "id", "item_id", "item_type", "event", "whodunnit", "created_at" FROM "paper_trail_model_data_mapper_versions" WHERE ("item_type" = 'Post' AND "item_id" = 605) ORDER BY "id"[0m
+  [1m[35mSQL (34.532ms)[0m  INSERT INTO "posts" ("title", "content") VALUES ('Something', 'Something else')
+  [1m[36mSQL (27.404ms)[0m  [1mINSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit") VALUES (606, 'Post', 'create', '1')[0m
+  [1m[35mSQL (28.604ms)[0m  INSERT INTO "posts" ("title", "content") VALUES ('Title', 'Content')
+  [1m[36mSQL (27.753ms)[0m  [1mINSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit") VALUES (607, 'Post', 'create', '1')[0m
+  [1m[35mSQL (25.470ms)[0m  INSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit", "object", "object_changes") VALUES (607, 'Post', 'update', '1', '---
+:id: 607
+:title: Title
+:content: Content
+', '---
+:title: Changed Title
+')
+  [1m[36mSQL (32.770ms)[0m  [1mUPDATE "posts" SET "title" = 'Changed Title' WHERE "id" = 607[0m
+  [1m[35mSQL (0.089ms)[0m  SELECT "id", "item_id", "item_type", "event", "whodunnit", "created_at" FROM "paper_trail_model_data_mapper_versions" WHERE ("item_type" = 'Post' AND "item_id" = 607) ORDER BY "id" DESC LIMIT 1
+  [1m[36mSQL (0.078ms)[0m  [1mSELECT "id", "object", "object_changes" FROM "paper_trail_model_data_mapper_versions" WHERE "id" = 776 ORDER BY "id"[0m
+  [1m[35mSQL (0.085ms)[0m  SELECT "id", "item_id", "item_type", "event", "whodunnit", "created_at" FROM "paper_trail_model_data_mapper_versions" WHERE ("item_type" = 'Post' AND "item_id" = 607) ORDER BY "id" DESC LIMIT 1
+  [1m[36mSQL (0.072ms)[0m  [1mSELECT "id", "object", "object_changes" FROM "paper_trail_model_data_mapper_versions" WHERE "id" = 776 ORDER BY "id"[0m
+  [1m[35mSQL (26.569ms)[0m  INSERT INTO "posts" ("title", "content") VALUES ('Something', 'Something else')
+  [1m[36mSQL (27.374ms)[0m  [1mINSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit") VALUES (608, 'Post', 'create', '1')[0m
+  [1m[35mSQL (0.083ms)[0m  SELECT "id", "item_id", "item_type", "event", "whodunnit", "created_at" FROM "paper_trail_model_data_mapper_versions" WHERE ("item_type" = 'Post' AND "item_id" = 608) ORDER BY "id"
+  [1m[36mSQL (33.170ms)[0m  [1mINSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit", "object", "object_changes") VALUES (608, 'Post', 'update', '1', '---
+:id: 608
+:title: Something
+:content: Something else
+', '---
+:title: Something 2
+')[0m
+  [1m[35mSQL (28.877ms)[0m  UPDATE "posts" SET "title" = 'Something 2' WHERE "id" = 608
+  [1m[36mSQL (0.082ms)[0m  [1mSELECT "id", "item_id", "item_type", "event", "whodunnit", "created_at" FROM "paper_trail_model_data_mapper_versions" WHERE ("item_type" = 'Post' AND "item_id" = 608) ORDER BY "id"[0m
+  [1m[35mSQL (0.077ms)[0m  SELECT "id", "item_id", "item_type", "event", "whodunnit", "created_at" FROM "paper_trail_model_data_mapper_versions" WHERE "event" = 'create' ORDER BY "id"
+  [1m[36mSQL (0.080ms)[0m  [1mSELECT "id", "item_id", "item_type", "event", "whodunnit", "created_at" FROM "paper_trail_model_data_mapper_versions" WHERE "event" = 'update' ORDER BY "id"[0m
+  [1m[35mSQL (0.077ms)[0m  SELECT "id", "item_id", "item_type", "event", "whodunnit", "created_at" FROM "paper_trail_model_data_mapper_versions" WHERE "event" = 'destroy' ORDER BY "id"
+[datamapper] Setting up the "test" environment:
+[datamapper] Setting up :default repository: '/tank/homes/jais/projects/dev/paper_trail/spec/dummy/db/test.sqlite3' on sqlite3
+  [1m[36mSQL (35.183ms)[0m  [1mINSERT INTO "posts" ("title", "content") VALUES ('Something', 'Something else')[0m
+  [1m[35mSQL (46.807ms)[0m  INSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit") VALUES (609, 'Post', 'create', '1')
+  [1m[36mSQL (44.993ms)[0m  [1mINSERT INTO "posts" ("title", "content") VALUES ('Something', 'Something else')[0m
+  [1m[35mSQL (47.280ms)[0m  INSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit") VALUES (610, 'Post', 'create', '1')
+  [1m[36mSQL (47.385ms)[0m  [1mINSERT INTO "posts" ("title", "content") VALUES ('Something', 'Something else')[0m
+  [1m[35mSQL (38.549ms)[0m  INSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit") VALUES (611, 'Post', 'create', '1')
+  [1m[36mSQL (46.802ms)[0m  [1mINSERT INTO "posts" ("title", "content") VALUES ('Title', 'Content')[0m
+  [1m[35mSQL (58.617ms)[0m  INSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit", "object") VALUES (612, 'Post', 'destroy', '1', '---
+:id: 612
+:title: Title
+:content: Content
+')
+  [1m[36mSQL (0.115ms)[0m  [1mSELECT "id", "item_id", "item_type", "event", "whodunnit", "created_at" FROM "paper_trail_model_data_mapper_versions" WHERE ("item_type" = 'Post' AND "item_id" = 612) ORDER BY "id"[0m
+  [1m[35mSQL (34.602ms)[0m  INSERT INTO "posts" ("title", "content") VALUES ('Something', 'Something else')
+  [1m[36mSQL (57.383ms)[0m  [1mINSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit") VALUES (613, 'Post', 'create', '1')[0m
+  [1m[35mSQL (58.655ms)[0m  INSERT INTO "posts" ("title", "content") VALUES ('Title', 'Content')
+  [1m[36mSQL (47.769ms)[0m  [1mINSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit") VALUES (614, 'Post', 'create', '1')[0m
+  [1m[35mSQL (0.080ms)[0m  SELECT "id", "item_id", "item_type", "event", "whodunnit", "created_at" FROM "paper_trail_model_data_mapper_versions" WHERE ("item_type" = 'Post' AND "item_id" = 614) ORDER BY "id"
+  [1m[36mSQL (52.011ms)[0m  [1mINSERT INTO "posts" ("title", "content") VALUES ('Something', 'Something else')[0m
+  [1m[35mSQL (57.438ms)[0m  INSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit") VALUES (615, 'Post', 'create', '1')
+  [1m[36mSQL (48.692ms)[0m  [1mINSERT INTO "posts" ("title", "content") VALUES ('Title', 'Content')[0m
+  [1m[35mSQL (57.778ms)[0m  INSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit") VALUES (616, 'Post', 'create', '1')
+  [1m[36mSQL (0.083ms)[0m  [1mSELECT "id", "item_id", "item_type", "event", "whodunnit", "created_at" FROM "paper_trail_model_data_mapper_versions" WHERE ("item_type" = 'Post' AND "item_id" = 616) ORDER BY "id" LIMIT 1[0m
+  [1m[35mSQL (0.077ms)[0m  SELECT "id", "object", "object_changes" FROM "paper_trail_model_data_mapper_versions" WHERE "id" = 786 ORDER BY "id"
+  [1m[36mSQL (0.080ms)[0m  [1mSELECT "id", "item_id", "item_type", "event", "whodunnit", "created_at" FROM "paper_trail_model_data_mapper_versions" WHERE ("item_type" = 'Post' AND "item_id" = 616) ORDER BY "id" LIMIT 1[0m
+  [1m[35mSQL (0.068ms)[0m  SELECT "id", "object", "object_changes" FROM "paper_trail_model_data_mapper_versions" WHERE "id" = 786 ORDER BY "id"
+  [1m[36mSQL (40.409ms)[0m  [1mINSERT INTO "posts" ("title", "content") VALUES ('Something', 'Something else')[0m
+  [1m[35mSQL (40.206ms)[0m  INSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit") VALUES (617, 'Post', 'create', '1')
+  [1m[36mSQL (53.273ms)[0m  [1mINSERT INTO "posts" ("title", "content") VALUES ('Title', 'Content')[0m
+  [1m[35mSQL (57.843ms)[0m  INSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit") VALUES (618, 'Post', 'create', '1')
+  [1m[36mSQL (0.083ms)[0m  [1mSELECT "id", "item_id", "item_type", "event", "whodunnit", "created_at" FROM "paper_trail_model_data_mapper_versions" WHERE ("item_type" = 'Post' AND "item_id" = 618) ORDER BY "id" LIMIT 1[0m
+  [1m[35mSQL (29.905ms)[0m  INSERT INTO "posts" ("title", "content") VALUES ('Something', 'Something else')
+  [1m[36mSQL (35.163ms)[0m  [1mINSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit") VALUES (619, 'Post', 'create', '1')[0m
+  [1m[35mSQL (54.927ms)[0m  INSERT INTO "posts" ("title", "content") VALUES ('Title', 'Content')
+  [1m[36mSQL (47.714ms)[0m  [1mINSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit") VALUES (620, 'Post', 'create', '1')[0m
+  [1m[35mSQL (47.632ms)[0m  INSERT INTO "posts" ("title", "content") VALUES ('Something', 'Something else')
+  [1m[36mSQL (47.424ms)[0m  [1mINSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit") VALUES (621, 'Post', 'create', '1')[0m
+  [1m[35mSQL (48.638ms)[0m  INSERT INTO "posts" ("title", "content") VALUES ('Title', 'Content')
+  [1m[36mSQL (47.781ms)[0m  [1mINSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit") VALUES (622, 'Post', 'create', '1')[0m
+  [1m[35mSQL (0.084ms)[0m  SELECT "id", "item_id", "item_type", "event", "whodunnit", "created_at" FROM "paper_trail_model_data_mapper_versions" WHERE ("item_type" = 'Post' AND "item_id" = 622) ORDER BY "id" DESC LIMIT 1
+  [1m[36mSQL (0.068ms)[0m  [1mSELECT "id", "object", "object_changes" FROM "paper_trail_model_data_mapper_versions" WHERE "id" = 792 ORDER BY "id"[0m
+  [1m[35mSQL (42.413ms)[0m  INSERT INTO "posts" ("title", "content") VALUES ('Something', 'Something else')
+  [1m[36mSQL (47.397ms)[0m  [1mINSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit") VALUES (623, 'Post', 'create', '1')[0m
+  [1m[35mSQL (48.669ms)[0m  INSERT INTO "posts" ("title", "content") VALUES ('Title', 'Content')
+  [1m[36mSQL (47.749ms)[0m  [1mINSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit") VALUES (624, 'Post', 'create', '1')[0m
+  [1m[35mSQL (0.083ms)[0m  SELECT "id", "item_id", "item_type", "event", "whodunnit", "created_at" FROM "paper_trail_model_data_mapper_versions" WHERE ("item_type" = 'Post' AND "item_id" = 624) ORDER BY "id"
+  [1m[36mSQL (44.379ms)[0m  [1mINSERT INTO "posts" ("title", "content") VALUES ('Something', 'Something else')[0m
+  [1m[35mSQL (47.314ms)[0m  INSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit") VALUES (625, 'Post', 'create', '1')
+  [1m[36mSQL (48.633ms)[0m  [1mINSERT INTO "posts" ("title", "content") VALUES ('Title', 'Content')[0m
+  [1m[35mSQL (43.378ms)[0m  INSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit") VALUES (626, 'Post', 'create', '1')
+  [1m[36mSQL (21.914ms)[0m  [1mINSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit", "object", "object_changes") VALUES (626, 'Post', 'update', '1', '---
+:id: 626
+:title: Title
+:content: Content
+', '---
+:title: Changed Title
+')[0m
+  [1m[35mSQL (53.201ms)[0m  UPDATE "posts" SET "title" = 'Changed Title' WHERE "id" = 626
+  [1m[36mSQL (0.098ms)[0m  [1mSELECT "id", "item_id", "item_type", "event", "whodunnit", "created_at" FROM "paper_trail_model_data_mapper_versions" WHERE ("item_type" = 'Post' AND "item_id" = 626) ORDER BY "id"[0m
+  [1m[35mSQL (48.213ms)[0m  INSERT INTO "posts" ("title", "content") VALUES ('Something', 'Something else')
+  [1m[36mSQL (45.251ms)[0m  [1mINSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit") VALUES (627, 'Post', 'create', '1')[0m
+  [1m[35mSQL (56.888ms)[0m  INSERT INTO "posts" ("title", "content") VALUES ('Title', 'Content')
+  [1m[36mSQL (47.791ms)[0m  [1mINSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit") VALUES (628, 'Post', 'create', '1')[0m
+  [1m[35mSQL (57.094ms)[0m  INSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit", "object", "object_changes") VALUES (628, 'Post', 'update', '1', '---
+:id: 628
+:title: Title
+:content: Content
+', '---
+:title: Changed Title
+')
+  [1m[36mSQL (53.085ms)[0m  [1mUPDATE "posts" SET "title" = 'Changed Title' WHERE "id" = 628[0m
+  [1m[35mSQL (0.091ms)[0m  SELECT "id", "item_id", "item_type", "event", "whodunnit", "created_at" FROM "paper_trail_model_data_mapper_versions" WHERE ("item_type" = 'Post' AND "item_id" = 628) ORDER BY "id" DESC LIMIT 1
+  [1m[36mSQL (0.077ms)[0m  [1mSELECT "id", "object", "object_changes" FROM "paper_trail_model_data_mapper_versions" WHERE "id" = 800 ORDER BY "id"[0m
+  [1m[35mSQL (0.086ms)[0m  SELECT "id", "item_id", "item_type", "event", "whodunnit", "created_at" FROM "paper_trail_model_data_mapper_versions" WHERE ("item_type" = 'Post' AND "item_id" = 628) ORDER BY "id" DESC LIMIT 1
+  [1m[36mSQL (0.071ms)[0m  [1mSELECT "id", "object", "object_changes" FROM "paper_trail_model_data_mapper_versions" WHERE "id" = 800 ORDER BY "id"[0m
+  [1m[35mSQL (46.161ms)[0m  INSERT INTO "posts" ("title", "content") VALUES ('Something', 'Something else')
+  [1m[36mSQL (37.131ms)[0m  [1mINSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit") VALUES (629, 'Post', 'create', '1')[0m
+  [1m[35mSQL (0.085ms)[0m  SELECT "id", "item_id", "item_type", "event", "whodunnit", "created_at" FROM "paper_trail_model_data_mapper_versions" WHERE ("item_type" = 'Post' AND "item_id" = 629) ORDER BY "id"
+  [1m[36mSQL (31.762ms)[0m  [1mINSERT INTO "paper_trail_model_data_mapper_versions" ("item_id", "item_type", "event", "whodunnit", "object", "object_changes") VALUES (629, 'Post', 'update', '1', '---
+:id: 629
+:title: Something
+:content: Something else
+', '---
+:title: Something 2
+')[0m
+  [1m[35mSQL (60.155ms)[0m  UPDATE "posts" SET "title" = 'Something 2' WHERE "id" = 629
+  [1m[36mSQL (0.084ms)[0m  [1mSELECT "id", "item_id", "item_type", "event", "whodunnit", "created_at" FROM "paper_trail_model_data_mapper_versions" WHERE ("item_type" = 'Post' AND "item_id" = 629) ORDER BY "id"[0m
+  [1m[35mSQL (0.079ms)[0m  SELECT "id", "item_id", "item_type", "event", "whodunnit", "created_at" FROM "paper_trail_model_data_mapper_versions" WHERE "event" = 'create' ORDER BY "id"
+  [1m[36mSQL (0.079ms)[0m  [1mSELECT "id", "item_id", "item_type", "event", "whodunnit", "created_at" FROM "paper_trail_model_data_mapper_versions" WHERE "event" = 'update' ORDER BY "id"[0m
+  [1m[35mSQL (0.079ms)[0m  SELECT "id", "item_id", "item_type", "event", "whodunnit", "created_at" FROM "paper_trail_model_data_mapper_versions" WHERE "event" = 'destroy' ORDER BY "id"
