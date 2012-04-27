@@ -147,14 +147,11 @@ module PaperTrail
           self.class.paper_trail_on if paper_trail_was_enabled
         end
 
-        def test_method(params)
-          respond_to?(params)
-        end
         
         def changes
           change_hash = Hash.new
           self.dirty_attributes.to_hash.each do |attr,val|
-            changes_hash[attr.name] = val
+            change_hash[attr.name] = val
           end
           change_hash
         end
